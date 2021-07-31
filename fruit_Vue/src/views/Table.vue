@@ -43,8 +43,28 @@
 <script>
 export default {
   methods: {
-    fruitDelete(row){
-       
+    fruitDelete(object) {
+
+      let _this = this
+      this.$confirm('是否确认要删除' + object.name + '?', '删除数据', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        axios.delete('http://127.0.0.1:8181/fruit/delete/' + object.id).then(function (response) {
+          if (response.data) {
+            _this.$alert(object.name + '删除成功!', '删除数据', {
+              confirmButtonText: '确定',
+              callback: action => {
+                location.reload()
+              }
+            });
+          }
+        })
+
+      }).catch(() => {
+
+      });
     }
   },
   created() {
