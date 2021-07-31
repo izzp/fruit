@@ -25,17 +25,20 @@ public class GenerateTest {
         dataSourceConfig.setDriverName("com.mysql.cj.jdbc.Driver");
         dataSourceConfig.setUsername("root");
         dataSourceConfig.setPassword("root");
+        //数据库
         dataSourceConfig.setUrl("jdbc:mysql://localhost:3306/fruit");
         autoGenerator.setDataSource(dataSourceConfig);
         //全局配置
         GlobalConfig globalConfig = new GlobalConfig();
         globalConfig.setOutputDir(System.getProperty("user.dir") + "/src/main/java");
-        globalConfig.setAuthor("admin");
+        //作者
+        globalConfig.setAuthor("zhaozhipeng");
         globalConfig.setOpen(false);
         globalConfig.setServiceName("%sService");
         autoGenerator.setGlobalConfig(globalConfig);
         //包信息
         PackageConfig packageConfig = new PackageConfig();
+        //包名
         packageConfig.setParent("com.mezzp");
         packageConfig.setEntity("entity");
         packageConfig.setMapper("mapper");
@@ -45,9 +48,12 @@ public class GenerateTest {
         autoGenerator.setPackageInfo(packageConfig);
         //策略配置
         StrategyConfig strategyConfig = new StrategyConfig();
+        //针对的表
         strategyConfig.setInclude("fruit");
+        //下划线转驼峰
         strategyConfig.setNaming(NamingStrategy.underline_to_camel);
         strategyConfig.setColumnNaming(NamingStrategy.underline_to_camel);
+        //使用Lombok注解
         strategyConfig.setEntityLombokModel(true);
         autoGenerator.setStrategy(strategyConfig);
         //运行
