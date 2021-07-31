@@ -3,10 +3,10 @@ package com.mezzp.controller;
 
 import com.mezzp.entity.Fruit;
 import com.mezzp.service.FruitService;
+import com.mezzp.vo.BarVO;
+import com.mezzp.vo.PieVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import org.springframework.stereotype.Controller;
 
 import java.util.List;
 
@@ -76,6 +76,26 @@ public class FruitController {
     @PostMapping("/add")
     public boolean addFruit(@RequestBody Fruit fruit) {
         return this.fruitService.save(fruit);
+    }
+
+    /**
+     * 用于柱状图
+     *
+     * @return BarVO
+     */
+    @GetMapping("/barVO")
+    public BarVO barVo() {
+        return this.fruitService.barVoList();
+    }
+
+    /**
+     * 用于饼图
+     *
+     * @return
+     */
+    @GetMapping("/pieVO")
+    public List<PieVO> pieVO() {
+        return this.fruitService.pieVOList();
     }
 }
 

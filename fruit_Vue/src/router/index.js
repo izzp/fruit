@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 import Pie from '../views/Pie'
 import Table from '../views/Table'
 import Edit from '../views/Edit'
@@ -11,8 +10,8 @@ Vue.use(VueRouter)
 const routes = [
     {
         path: '/',
-        name: 'Home',
-        component: Home
+        name: 'table',
+        component: Table
     },
     {
         path: '/bar',
