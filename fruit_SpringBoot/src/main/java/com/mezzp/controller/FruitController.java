@@ -44,5 +44,38 @@ public class FruitController {
     public boolean delete(@PathVariable("id") Integer id) {
         return this.fruitService.removeById(id);
     }
+
+    /**
+     * 根据id查找
+     *
+     * @param id id
+     * @return Fruit
+     */
+    @GetMapping("/find/{id}")
+    public Fruit findFruitById(@PathVariable("id") Integer id) {
+        return this.fruitService.getById(id);
+    }
+
+    /**
+     * 更新数据
+     *
+     * @param fruit
+     * @return
+     */
+    @PutMapping("/update")
+    public boolean updateFruit(@RequestBody Fruit fruit) {
+        return this.fruitService.updateById(fruit);
+    }
+
+    /**
+     * 添加数据
+     *
+     * @param fruit fruit
+     * @return
+     */
+    @PostMapping("/add")
+    public boolean addFruit(@RequestBody Fruit fruit) {
+        return this.fruitService.save(fruit);
+    }
 }
 

@@ -7,7 +7,7 @@
         fixed
         prop="id"
         label="水果ID"
-        width="100">
+        width="160">
     </el-table-column>
     <el-table-column
         prop="name"
@@ -31,10 +31,10 @@
     <el-table-column
 
         label="操作"
-        width="100">
+        width="160">
       <template slot-scope="scope">
         <el-button @click="fruitDelete(scope.row)" type="text" size="small">删除</el-button>
-        <el-button type="text" size="small">编辑</el-button>
+        <el-button @click="findFruit(scope.row)" type="text" size="small">编辑</el-button>
       </template>
     </el-table-column>
   </el-table>
@@ -43,6 +43,9 @@
 <script>
 export default {
   methods: {
+    findFruit(object) {
+      this.$router.push('/edit?id=' + object.id)
+    },
     fruitDelete(object) {
 
       let _this = this
@@ -63,7 +66,10 @@ export default {
         })
 
       }).catch(() => {
-
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
+        });
       });
     }
   },
