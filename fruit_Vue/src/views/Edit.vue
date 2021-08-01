@@ -1,5 +1,5 @@
 <template>
-  <el-form ref="form" :rules="rules" :model="fruit" label-width="80px" style="width: 600px">
+  <el-form ref="form" :rules="rules" :model="fruit" label-width="80px" style="width: 600px; margin: auto;">
     <el-form-item label="水果ID">
       <el-input v-model="fruit.id" readonly></el-input>
     </el-form-item>
